@@ -29,6 +29,9 @@ public class User implements UserDetails{
 	private String phone;
 	private boolean enabled=true;
 
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	private ShoppingCart shoppingCart;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<UserShipping> userShippingList;
 
@@ -38,6 +41,14 @@ public class User implements UserDetails{
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
 
 	public Long getId() {
 		return id;

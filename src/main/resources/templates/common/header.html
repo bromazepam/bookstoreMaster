@@ -11,11 +11,11 @@
 
 <link href="/css/non-responsive.css" rel="stylesheet" />
 
-	<!-- data table -->
-	<link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
-	<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+<!-- data table -->
+<link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
+<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
 
-	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
 <link href="/css/style.css" rel="stylesheet" />
@@ -35,7 +35,7 @@
 				</div>
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="dropdown"><a th:href="@{/bookshlef}" class="dropdown-toggle"
+						<li class="dropdown"><a th:href="@{/bookshelf}" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">BOOKS <span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">SHOPPING CART</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
@@ -66,10 +66,12 @@
 	</div>
 	
 	<div th:fragment="body-bottom-scripts">
-		<script th:src="@{/js/jquery.min.js}"></script>
-	<script src="/js/bootstrap.min.js"></script>
-
-		<!-- data table -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	
+	<script th:src="@{/js/scripts.js}"></script>
+	
+	<!-- data table -->
 		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
 		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
 	</div>
