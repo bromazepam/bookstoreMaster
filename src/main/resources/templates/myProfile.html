@@ -10,7 +10,7 @@
 			<div class="col-xs-8">
 				<h2 class="section-headline">
 					<h2 class="section-headline">
-						<span th:text="${#strings.toUpperCase(user.username)}"></span>
+						<span th:text="${#strings.toUpperCase(order.username)}"></span>
 					</h2>
 				</h2>
 			</div>
@@ -41,15 +41,23 @@
 				<!-- Tab panels -->
 				<div class="tab-content">
 
-					<!-- Edit user information -->
+					<!-- Edit order information -->
 					<div class="tab-pane fade" id="tab-1"
 						th:classappend="${classActiveEdit}? 'in active'">
 						<div class="panel-group">
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-top: 20px;">
+
+									<div class="alert alert-danger" th:if="${incorrectPassword}">
+										<strong>Incorrect Password</strong>Please enter the correct password for the current user.
+									</div>
+									<div class="alert alert-success" th:if="${updateSuccess}">
+										<strong>Update Success!</strong>
+									</div>
+
 									<form th:action="@{/updateUserInfo}" method="post">
-										<input type="hidden" name="id" th:value="${user.id}" />
+										<input type="hidden" name="id" th:value="${order.id}" />
 
 										<div class="bg-info" th:if="${updateUserInfo}">User info
 											updated.</div>
@@ -59,12 +67,12 @@
 												<div class="col-xs-6">
 													<label for="firstName">First Name</label> <input
 														type="text" class="form-control" id="firstName"
-														name="firstName" th:value="${user.firstName}" />
+														name="firstName" th:value="${order.firstName}" />
 												</div>
 												<div class="col-xs-6">
 													<label for="lastName">Last Name</label> <input type="text"
 														class="form-control" id="lastName" name="lastName"
-														th:value="${user.lastName}" />
+														th:value="${order.lastName}" />
 												</div>
 											</div>
 										</div>
@@ -72,12 +80,12 @@
 										<div class="form-group">
 											<label for="userName">Username</label> ' <input type="text"
 												class="form-control" id="userName" name="username"
-												th:value="${user.username}" />
+												th:value="${order.username}" />
 										</div>
 										<div class="form-group">
 											<label for="currentPassword">Current Password</label> ' <input
-												type="text" class="form-control" id="currentPassword"
-												name="currentPassword" th:value="${currentPassword}" />
+												type="password" class="form-control" id="currentPassword"
+												name="password" th:value="${currentPassword}" />
 										</div>
 										<p style="color: #828282">Enter your current password to
 											change the email address or password.</p>
@@ -85,7 +93,7 @@
 										<div class="form-group">
 											<label for="email">* Email Address</label> ' <input
 												type="text" class="form-control" id="email" name="email"
-												th:value="${user.email}" />
+												th:value="${order.email}" />
 										</div>
 										<p style="color: #828282">A valid email address. All
 											emails from the system withll be sent to this address. The
@@ -94,7 +102,8 @@
 											notification.</p>
 
 										<div class="form-group">
-											<label for="txtNewPassword">Password</label> ' <input
+											<label for="txtNewPassword">Password</label>$nbsp;<span  id="checkPasswordMatch" style="color:red;"></span>
+											<input
 												type="password" class="form-control" id="txtNewPassword"
 												name="newPassword" />
 										</div>
@@ -103,11 +112,10 @@
 											<label for="txtConfirmPassword">Confirm Password</label> ' <input
 												type="password" class="form-control" id="txtConfirmPassword" />
 										</div>
-										<p style="color: #828282">To change the current user
+										<p style="color: #828282">To change the current order
 											password, enter the new password in both fields.</p>
 
-										<button type="submit" class="btn btn-primary">Create
-											new account</button>
+										<button id="updateUserInfoButton" type="submit" class="btn btn-primary">Save all</button>
 									</form>
 								</div>
 							</div>

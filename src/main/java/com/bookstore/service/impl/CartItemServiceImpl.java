@@ -70,6 +70,11 @@ public class CartItemServiceImpl implements CartItemService{
     }
 
     @Override
+    public CartItem save(CartItem cartItem) {
+        return  cartItemRepository.save(cartItem);
+    }
+
+    @Override
     public void removeCartItem(CartItem cartItem) {
         bookToCartItemRepository.deleteByCartItem(cartItem);
         cartItemRepository.delete(cartItem);
