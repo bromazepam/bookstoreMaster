@@ -81,7 +81,6 @@ public class ShoppingCartController {
 
         return "forward:/shoppingCart/cart";
     }
-
     @Transactional
     @RequestMapping("/removeItem")
     public String removeItem(@RequestParam("id") Long id) {
