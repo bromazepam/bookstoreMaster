@@ -75,6 +75,11 @@ public class CartItemServiceImpl implements CartItemService{
     }
 
     @Override
+    public List<CartItem> findByOrder(Order order) {
+        return cartItemRepository.findByOrder(order);
+    }
+
+    @Override
     public void removeCartItem(CartItem cartItem) {
         bookToCartItemRepository.deleteByCartItem(cartItem);
         cartItemRepository.delete(cartItem);
