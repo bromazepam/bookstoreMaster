@@ -159,9 +159,11 @@ public class CheckoutController {
 		if (shippingAddress.getShippingAddressStreet1().isEmpty() || shippingAddress.getShippingAddressCity().isEmpty()
 				|| shippingAddress.getShippingAddressState().isEmpty()
 				|| shippingAddress.getShippingAddressName().isEmpty()
-				|| shippingAddress.getShippingAddressZipcode().isEmpty() || payment.getCardNumber().isEmpty()
+				|| shippingAddress.getShippingAddressZipcode().isEmpty()
+				|| payment.getCardNumber().isEmpty()
 				|| payment.getCvc() == 0 || billingAddress.getBillingAddressStreet1().isEmpty()
-				|| billingAddress.getBillingAddressCity().isEmpty() || billingAddress.getBillingAddressState().isEmpty()
+				|| billingAddress.getBillingAddressCity().isEmpty()
+				|| billingAddress.getBillingAddressState().isEmpty()
 				|| billingAddress.getBillingAddressName().isEmpty()
 				|| billingAddress.getBillingAddressZipcode().isEmpty())
 			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";

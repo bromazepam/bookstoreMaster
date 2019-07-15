@@ -327,7 +327,7 @@
                                         <div class="form-group">
                                             <label for="billingState">* State</label> <select
                                                 id="billingState" class="form-control billingAddress"
-                                                th:name="billingAddress"
+                                                th:name="billingAddressState"
                                                 th:value="${billingAddress.billingAddressState}"
                                                 required="required">
                                             <option value="" disabled="disabled">Please select
@@ -455,7 +455,7 @@
 </div>
 <!-- end of container -->
 
-
+<div th:replace="common/header :: footer"/>
 <div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>
