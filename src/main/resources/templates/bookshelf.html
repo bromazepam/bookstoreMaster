@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
-<head th:replace="common/header :: common-header" />
+<head th:replace="common/header :: common-header">
 
+</head>
 <body>
 <div th:replace="common/header :: navbar" />
 
@@ -11,7 +12,7 @@
 			<h2 class="section-headline">
 				<h2 class="section-headline">
 						<span
-								th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Books'"></span>
+								th:text="${user}? ${#strings.toUpperCase(user.username)} : 'Sve Knjige'"></span>
 				</h2>
 			</h2>
 		</div>
@@ -20,27 +21,26 @@
 		</div>
 	</div>
 	<hr
-			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;" />
+			style="position: absolute; width: 88%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;" />
 	<img class="img-responsive" src="/image/wood.png"
 		 style="margin-top: -75px;" />
 
 	<div class="row" style="margin-top: 60px;">
 		<div class="col-xs-3">
-			<h3><label for="category">Category</label></h3>
+			<h3><label for="category">Kategorije</label></h3>
 			<div class="list-group" id="category">
-				<a th:href="@{/bookshelf(category='all')}" th:classappend="${activeAll}? 'active'" class="list-group-item">All</a>
-				<a th:href="@{/searchByCategory(category='Management')}" th:classappend="${activeManagement}? 'active'" class="list-group-item">Management</a>
-				<a th:href="@{/searchByCategory(category='Fiction')}" th:classappend="${activeFiction}? 'active'" class="list-group-item">Fiction</a>
-				<a th:href="@{/searchByCategory(category='Engineering')}" th:classappend="${activeEngineering}? 'active'" class="list-group-item">Engineering</a>
-				<a th:href="@{/searchByCategory(category='Programming')}" th:classappend="${activeProgramming}? 'active'" class="list-group-item">Programming</a>
-				<a th:href="@{/searchByCategory(category='Arts &amp; Literature')}" th:classappend="${activeArtsLiterature}? 'active'" class="list-group-item">Arts &amp; Literature</a>
+				<a th:href="@{/bookshelf(category='all')}" th:classappend="${activeAll}? 'active'" class="list-group-item">Sve</a>
+				<a th:href="@{/searchByCategory(category='Management')}" th:classappend="${activeManagement}? 'active'" class="list-group-item">Menadžment</a>
+				<a th:href="@{/searchByCategory(category='Fiction')}" th:classappend="${activeFiction}? 'active'" class="list-group-item">Fikcija</a>
+				<a th:href="@{/searchByCategory(category='Engineering')}" th:classappend="${activeEngineering}? 'active'" class="list-group-item">Inženjerstvo</a>
+				<a th:href="@{/searchByCategory(category='Programming')}" th:classappend="${activeProgramming}? 'active'" class="list-group-item">Programiranje</a>
+				<a th:href="@{/searchByCategory(category='Arts &amp; Literature')}" th:classappend="${activeArtsLiterature}? 'active'" class="list-group-item">Umetnost</a>
 			</div>
 		</div>
 
 		<div class="col-xs-9">
 			<div th:if="${emptyList}">
-				<h5 style="font-style: italic;">Oops, no result is found. Try
-					something else or try again later.</h5>
+				<h5 style="font-style: italic;">Nema rezultata pretrage. Pokušajte sa nekim drugim terminom ili pokušajte ponovo malo kasnije.</h5>
 			</div>
 
 			<table border="0" id="bookList">
@@ -66,7 +66,7 @@
 									<p th:text="${book.author}"></p>
 									<a th:href="@{/bookDetail?id=}+${book.id}"><span
 											th:text="${#strings.capitalize(book.format)}"></span></a> <span
-										th:text="${book.numberOfPages}"><span> pages</span></span><br />
+										th:text="${book.numberOfPages}"><span> stranice</span></span><br />
 
 									<a th:href="@{/bookDetail?id=}+${book.id}"><span
 											style="font-size: x-large; color: #db3208;">$<span
@@ -94,7 +94,7 @@
 <script>
 		$(document).ready(function() {
 			$('#bookList').DataTable({
-				"lengthMenu":[[5,10,15,20,-1],[5,10,15,20,"All"]],
+				"lengthMenu":[[5,10,15,20,-1],[5,10,15,20,"Sve"]],
 				"ordering":false,
 				stateSave:true
 			});
@@ -105,6 +105,12 @@
 				}, 200);
 			});
 		});
+		$.extend(true, $.fn.dataTable.defaults, {
+    "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Serbian.json"
+    }
+});
 	</script>
+<!--<script src="http://cdn.datatables.net/plug-ins/1.10.19/i18n/Serbian.json"></script>-->
 </body>
 </html>

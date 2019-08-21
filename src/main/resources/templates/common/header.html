@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<title>Le's Bookstore</title>
+<title>Svet knjiga</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
@@ -26,37 +26,37 @@
 <body>
 	<div th:fragment="navbar">
 		<div class="page-top"
-			style="width: 100%; height: 20px; background-color: #f46b42;"></div>
+			style="width: 100%; height: 20px; background-color: #337ab7;"></div>
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/}">LE'S BOOKSTORE</a>
+					<a class="navbar-brand" th:href="@{/}">SVET KNJIGA</a>
 				</div>
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
 						<li class="dropdown"><a th:href="@{/bookshelf}" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">BOOKS <span class="caret"></span></a>
+							aria-expanded="false">KNJIGE <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a th:href="@{/bookshelf}">Browse the bookshelf</a></li>
-								<li><a th:href="@{/hours}">Store hours &#38; Directions</a></li>
-								<li><a th:href="@{/faq}">FAQ</a></li>
+								<li><a th:href="@{/bookshelf}">Pretraži po policama</a></li>
+								<li><a th:href="@{/hours}">Radno vreme i Adresa</a></li>
+								<li><a th:href="@{/faq}">Pomoć</a></li>
 
 							</ul></li>
 						<form class="navbar-form" th:action="@{/searchBook}" method="post">
 							<div class="form-group">
 								<input type="text" name="keyword" class="form-control"
-									placeholder="Book title" />
+									placeholder="Pronađi svoju knjigu" />
 							</div>
-							<button type="submit" class="btn btn-default">Search</button>
+							<button type="submit" class="btn btn-default">Pretraga</button>
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
-						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
-						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
-						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">KORPA</a></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MOJ NALOG</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MOJ NALOG</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">ODJAVA</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -77,38 +77,36 @@
 											   src="/image/logo.png" style="width: 200px;" /></a>
 					</div>
 					<p>
-						Le's Independent Book Store. <br />Serving our customers with the
-						best.
+						Svet knjiga. <br />Vama na usluzi
 					</p>
 				</div>
 				<div class="col-xs-3 paddingtop-bottom">
-					<h6 class="heading7">CONTACT</h6>
+					<h6 class="heading7">KONTAKT</h6>
 					<ul class="post">
 						<p>
-							<i class="fa fa-map-pin"></i> 123 XXX Ave<br /> Boston MA, USA
-							02112
+							<i class="fa fa-map-pin"></i> Resavska 33<br /> 11000 Beograd
 						</p>
 						<p>
-							<i class="fa fa-phone"></i> Phone (USA) : +1 999 999 9999
+							<i class="fa fa-phone"></i> Telefon : 011/71-55-055
 						</p>
 						<p>
-							<i class="fa fa-envelope"></i> E-mail : info@lebookstore.com
+							<i class="fa fa-envelope"></i> E-mail : info@svetknjiga.rs
 						</p>
 					</ul>
 				</div>
 				<div class="col-xs-3 paddingtop-bottom">
-					<h6 class="heading7">LINKS</h6>
+					<h6 class="heading7">Linkovi</h6>
 					<ul class="footer-ul">
-						<li><a href="#"> Privacy Policy</a></li>
-						<li><a href="#"> Terms &#38; Conditions</a></li>
-						<li><a href="#"> Frequently Ask Questions</a></li>
+						<li><a href="#"> Pravila privatnosti</a></li>
+						<li><a href="#"> Uslovi korišćenja</a></li>
+						<li><a href="#"> Često postavljana pitanja</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-3 paddingtop-bottom">
-					<h6 class="heading7">STORE HOURS</h6>
+					<h6 class="heading7">RADNO VREME</h6>
 					<div class="post">
-						<p>Monday - Saturday: 9am - 11pm</p>
-						<p>Sunday: 10am - 10pm</p>
+						<p>Ponedeljak - Subota: 9am - 11pm</p>
+						<p>Nedelja: 10am - 10pm</p>
 					</div>
 				</div>
 			</div>
@@ -117,15 +115,14 @@
 		<!--copyright-->
 		<div class="copyright">
 			<div class="col-md-6">
-				<p>© 2017 - All Rights Reserved</p>
+				<p>© 2019 - All Rights Reserved</p>
 			</div>
 			<div class="col-md-6">
 				<ul class="bottom_ul">
-					<li><a href="#">About us</a></li>
+					<li><a href="#">O nama</a></li>
 					<li><a href="#">Blog</a></li>
-					<li><a href="#">Faq's</a></li>
-					<li><a href="#">Contact us</a></li>
-					<li><a href="#">Site Map</a></li>
+					<li><a href="#">Često postavljana pitanja</a></li>
+					<li><a href="#">Kontakt</a></li>
 				</ul>
 			</div>
 		</div>
