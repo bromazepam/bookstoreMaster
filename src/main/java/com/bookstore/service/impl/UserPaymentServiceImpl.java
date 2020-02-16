@@ -8,7 +8,7 @@ import com.bookstore.repository.UserPaymentRepository;
 import com.bookstore.service.UserPaymentService;
 
 @Service
-public class UserPaymentServiceImpl implements UserPaymentService{
+public class UserPaymentServiceImpl implements UserPaymentService {
 
     @Autowired
     private UserPaymentRepository userPaymentRepository;

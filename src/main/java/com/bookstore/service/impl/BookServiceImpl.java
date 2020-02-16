@@ -18,11 +18,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findAll() {
-        List<Book> bookList =  (List<Book>) bookRepository.findAll();
+        List<Book> bookList = (List<Book>) bookRepository.findAll();
         List<Book> activeBookList = new ArrayList<>();
 
-        for(Book book: bookList){
-            if(book.isActive()){
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }
@@ -40,8 +40,8 @@ public class BookServiceImpl implements BookService {
 
         List<Book> activeBookList = new ArrayList<>();
 
-        for(Book book: bookList){
-            if(book.isActive()){
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }
@@ -54,8 +54,8 @@ public class BookServiceImpl implements BookService {
 
         List<Book> activeBookList = new ArrayList<>();
 
-        for(Book book: bookList){
-            if(book.isActive()){
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }

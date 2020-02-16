@@ -28,20 +28,20 @@ public class SearchController {
     public String searchByCategory(
             @RequestParam("category") String category,
             Model model, Principal principal
-            ){
-        if(principal!=null) {
+    ) {
+        if (principal != null) {
             String username = principal.getName();
             User user = userService.findByUsername(username);
             model.addAttribute("user", user);
         }
-        String classActiveCategory ="active"+category;
-        classActiveCategory = classActiveCategory.replaceAll("\\s+","");
-        classActiveCategory = classActiveCategory.replaceAll("$","");
+        String classActiveCategory = "active" + category;
+        classActiveCategory = classActiveCategory.replaceAll("\\s+", "");
+        classActiveCategory = classActiveCategory.replaceAll("$", "");
         model.addAttribute(classActiveCategory, true);
 
         List<Book> bookList = bookService.findByCategory(category);
 
-        if(bookList.isEmpty()) {
+        if (bookList.isEmpty()) {
             model.addAttribute("emptyList", true);
             return "bookshelf";
         }
@@ -55,8 +55,8 @@ public class SearchController {
     public String searchBook(
             @ModelAttribute("keyword") String keyword,
             Principal principal, Model model
-            ){
-        if(principal!=null) {
+    ) {
+        if (principal != null) {
             String username = principal.getName();
             User user = userService.findByUsername(username);
             model.addAttribute("user", user);
@@ -64,7 +64,7 @@ public class SearchController {
 
         List<Book> bookList = bookService.blurrySearch(keyword);
 
-        if(bookList.isEmpty()) {
+        if (bookList.isEmpty()) {
             model.addAttribute("emptyList", true);
             return "bookshelf";
         }

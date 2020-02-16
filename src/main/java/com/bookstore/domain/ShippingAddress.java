@@ -21,7 +21,6 @@ public class ShippingAddress {
     private Order order;
 
 
-
     public Long getId() {
         return id;
     }

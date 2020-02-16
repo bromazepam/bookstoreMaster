@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class CartItemServiceImpl implements CartItemService{
+public class CartItemServiceImpl implements CartItemService {
 
     @Autowired
     private CartItemRepository cartItemRepository;
@@ -40,8 +40,8 @@ public class CartItemServiceImpl implements CartItemService{
         List<CartItem> cartItemList = findByShoppingCart(user.getShoppingCart());
 
         for (CartItem cartItem : cartItemList) {
-            if(book.getId() == cartItem.getBook().getId()) {
-                cartItem.setQty(cartItem.getQty()+qty);
+            if (book.getId() == cartItem.getBook().getId()) {
+                cartItem.setQty(cartItem.getQty() + qty);
                 cartItem.setSubtotal(new BigDecimal(book.getOurPrice()).multiply(new BigDecimal(qty)));
                 cartItemRepository.save(cartItem);
                 return cartItem;
@@ -71,7 +71,7 @@ public class CartItemServiceImpl implements CartItemService{
 
     @Override
     public CartItem save(CartItem cartItem) {
-        return  cartItemRepository.save(cartItem);
+        return cartItemRepository.save(cartItem);
     }
 
     @Override

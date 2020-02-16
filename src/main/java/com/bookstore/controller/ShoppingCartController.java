@@ -61,13 +61,13 @@ public class ShoppingCartController {
 
         if (Integer.parseInt(qty) > book.getInStockNumber()) {
             model.addAttribute("notEnoughStock", true);
-            return "forward:/bookDetail?id="+book.getId();
+            return "forward:/bookDetail?id=" + book.getId();
         }
 
         CartItem cartItem = cartItemService.addBookToCartItem(book, user, Integer.parseInt(qty));
         model.addAttribute("addBookSuccess", true);
 
-        return "forward:/bookDetail?id="+book.getId();
+        return "forward:/bookDetail?id=" + book.getId();
     }
 
     @RequestMapping("/updateCartItem")
@@ -81,6 +81,7 @@ public class ShoppingCartController {
 
         return "forward:/shoppingCart/cart";
     }
+
     @Transactional
     @RequestMapping("/removeItem")
     public String removeItem(@RequestParam("id") Long id) {

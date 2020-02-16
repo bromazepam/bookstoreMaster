@@ -19,7 +19,7 @@ public class UserPayment {
     private boolean defaultPayment;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
