@@ -8,7 +8,7 @@ import com.bookstore.service.*;
 import com.bookstore.service.impl.UserSecurityService;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
-import com.bookstore.utility.USConstants;
+import com.bookstore.utility.StateConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -170,7 +170,7 @@ public class HomeController {
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
-		List<String> stateList = USConstants.listOfUSStatesCode;
+		List<String> stateList = StateConstants.listOfUSStatesCode;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("classActiveEdit", true);
@@ -230,7 +230,7 @@ public class HomeController {
 		model.addAttribute("userBilling", userBilling);
 		model.addAttribute("userPayment", userPayment);
 
-		List<String> stateList = USConstants.listOfUSStatesCode;
+		List<String> stateList = StateConstants.listOfUSStatesCode;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
@@ -255,7 +255,7 @@ public class HomeController {
 
 		model.addAttribute("userShipping", userShipping);
 
-		List<String> stateList = USConstants.listOfUSStatesCode;
+		List<String> stateList = StateConstants.listOfUSStatesCode;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
@@ -320,7 +320,7 @@ public class HomeController {
 			model.addAttribute("userPayment", userPayment);
 			model.addAttribute("userBilling", userBilling);
 
-			List<String> stateList = USConstants.listOfUSStatesCode;
+			List<String> stateList = StateConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
@@ -350,7 +350,7 @@ public class HomeController {
 
 			model.addAttribute("userShipping", userShipping);
 
-			List<String> stateList = USConstants.listOfUSStatesCode;
+			List<String> stateList = StateConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
@@ -626,7 +626,7 @@ public class HomeController {
 			UserShipping userShipping = new UserShipping();
 			model.addAttribute("userShipping", userShipping);
 
-			List<String> stateList = USConstants.listOfUSStatesCode;
+			List<String> stateList = StateConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
