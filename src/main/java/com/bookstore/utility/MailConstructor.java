@@ -29,10 +29,10 @@ public class MailConstructor {
 	) {
 
 		String url = contextPath + "/newUser?token="+token;
-		String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
+		String message = "\nMolim vas potvrdite vas email klikom na link i izmenite vase informacije. Vasa sifra je: \n"+password;
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
-		email.setSubject("Le's Bookstore - New User");
+		email.setSubject("Moja knjizara - novi korisnik");
 		email.setText(url+message);
 		email.setFrom(env.getProperty("support.email"));
 		return email;
