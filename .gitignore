@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.git.bfg-report/2021-04-25/15-48-53/cache-stats.txt
+.git.bfg-report/2021-04-25/15-48-53/deleted-files.txt
+.git.bfg-report/2021-04-25/15-48-53/object-id-map.old-new.txt
+bfg-1.14.0.jar
