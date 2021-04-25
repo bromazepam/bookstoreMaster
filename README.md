@@ -2,7 +2,7 @@
 
 This is an e-commerce web application built by me while covering the 
 [udemy](https://www.udemy.com/complete-e-commerce-course-javaspringhibernate-and-mysql/)
-course using Java,Spring,Hibernate and MySQL. Bookstore is a simple Java Spring Boot application to store and sell books.
+course using Java, Spring, Hibernate and MySQL. Bookstore is a simple Java Spring Boot application to store and sell books.
  The project was built focusing the MVC pattern. It is divided into two
  individual modules, [admin](https://github.com/bromazepam/adminportal) and
 user part. Both running independently and using the same database. 
