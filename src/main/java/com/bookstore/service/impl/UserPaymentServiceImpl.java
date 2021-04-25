@@ -1,14 +1,13 @@
 package com.bookstore.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.bookstore.domain.UserPayment;
 import com.bookstore.repository.UserPaymentRepository;
 import com.bookstore.service.UserPaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
-public class UserPaymentServiceImpl implements UserPaymentService{
+public class UserPaymentServiceImpl implements UserPaymentService {
 
     @Autowired
     private UserPaymentRepository userPaymentRepository;

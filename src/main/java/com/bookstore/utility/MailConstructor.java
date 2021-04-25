@@ -28,12 +28,12 @@ public class MailConstructor {
 			String contextPath, Locale locale, String token, User user, String password
 	) {
 
-		String url = contextPath + "/newUser?token="+token;
-		String message = "\nMolim vas potvrdite vas email klikom na link i izmenite vase informacije. Vasa sifra je: \n"+password;
+		String url = contextPath + "/newUser?token=" + token;
+		String message = "\nMolim vas potvrdite vas email klikom na link i izmenite vase informacije. Vasa sifra je: \n" + password;
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject("Moja knjizara - novi korisnik");
-		email.setText(url+message);
+		email.setText(url + message);
 		email.setFrom(env.getProperty("support.email"));
 		return email;
 
@@ -53,7 +53,7 @@ public class MailConstructor {
 				email.setTo(user.getEmail());
 				email.setSubject("order confirmation - "+order.getId());
 				email.setText(text, true);
-				email.setFrom(new InternetAddress("graor95@gmail.com"));
+				email.setFrom(new InternetAddress("bookstoreSupport@gmail.com"));
 			}
 		};
 

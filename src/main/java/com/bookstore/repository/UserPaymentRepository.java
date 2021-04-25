@@ -1,9 +1,8 @@
 package com.bookstore.repository;
 
+import com.bookstore.domain.UserPayment;
 import org.springframework.data.repository.CrudRepository;
 
-import com.bookstore.domain.UserPayment;
-
-public interface UserPaymentRepository extends CrudRepository<UserPayment, Long>{
+public interface UserPaymentRepository extends CrudRepository<UserPayment, Long> {
 
 }
