@@ -9,7 +9,6 @@ import com.bookstore.service.impl.UserSecurityService;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
 import com.bookstore.utility.StateConstants;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,32 +31,30 @@ import java.util.*;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
+    private final MailConstructor mailConstructor;
+    private final UserService userService;
+    private final UserSecurityService userSecurityService;
+    private final BookService bookService;
+    private final UserPaymentService userPaymentService;
+    private final UserShippingService userShippingService;
+    private final CartItemService cartItemService;
+    private final OrderService orderService;
 
-    @Autowired
-    private MailConstructor mailConstructor;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private UserSecurityService userSecurityService;
-
-    @Autowired
-    private BookService bookService;
-
-    @Autowired
-    private UserPaymentService userPaymentService;
-
-    @Autowired
-    private UserShippingService userShippingService;
-
-    @Autowired
-    private CartItemService cartItemService;
-
-    @Autowired
-    private OrderService orderService;
+    public HomeController(JavaMailSender mailSender, MailConstructor mailConstructor, UserService userService,
+                          UserSecurityService userSecurityService, BookService bookService,
+                          UserPaymentService userPaymentService, UserShippingService userShippingService,
+                          CartItemService cartItemService, OrderService orderService) {
+        this.mailSender = mailSender;
+        this.mailConstructor = mailConstructor;
+        this.userService = userService;
+        this.userSecurityService = userSecurityService;
+        this.bookService = bookService;
+        this.userPaymentService = userPaymentService;
+        this.userShippingService = userShippingService;
+        this.cartItemService = cartItemService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping("/")
     public String index() {
@@ -106,7 +103,7 @@ public class HomeController {
             model.addAttribute("user", user);
         }
 
-        Book book = bookService.findOne(id);
+        Book book = bookService.findById(id);
 
         model.addAttribute("book", book);
 
@@ -122,36 +119,25 @@ public class HomeController {
     public String forgetPassword(
             HttpServletRequest request,
             @ModelAttribute("email") String email,
-            Model model
-    ) {
+            Model model) {
 
         model.addAttribute("classActiveForgetPassword", true);
-
         User user = userService.findByEmail(email);
-
         if (user == null) {
             model.addAttribute("emailNotExist", true);
             return "myAccount";
         }
-
         String password = SecurityUtility.randomPassword();
-
         String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
         user.setPassword(encryptedPassword);
-
         userService.save(user);
-
         String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
-
         String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-
         SimpleMailMessage newEmail = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user, password);
 
         mailSender.send(newEmail);
-
         model.addAttribute("forgetPasswordEmailSent", "true");
-
 
         return "myAccount";
     }
@@ -225,7 +211,6 @@ public class HomeController {
 
         UserBilling userBilling = new UserBilling();
         UserPayment userPayment = new UserPayment();
-
 
         model.addAttribute("userBilling", userBilling);
         model.addAttribute("userPayment", userPayment);
@@ -602,7 +587,7 @@ public class HomeController {
     @RequestMapping("/orderDetail")
     public String orderDetail(@RequestParam("id") Long orderId, Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
-        Order order = orderService.findOne(orderId);
+        Order order = orderService.findById(orderId);
 
         if (!order.getUser().getId().equals(user.getId())) {
             return "badRequestPage";

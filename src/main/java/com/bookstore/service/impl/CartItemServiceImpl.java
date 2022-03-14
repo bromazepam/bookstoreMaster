@@ -9,15 +9,18 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
 
-    @Autowired
-    private CartItemRepository cartItemRepository;
+    private final CartItemRepository cartItemRepository;
+    private final BookToCartItemRepository bookToCartItemRepository;
 
-    @Autowired
-    private BookToCartItemRepository bookToCartItemRepository;
+    public CartItemServiceImpl(CartItemRepository cartItemRepository, BookToCartItemRepository bookToCartItemRepository) {
+        this.cartItemRepository = cartItemRepository;
+        this.bookToCartItemRepository = bookToCartItemRepository;
+    }
 
     public List<CartItem> findByShoppingCart(ShoppingCart shoppingCart) {
         return cartItemRepository.findByShoppingCart(shoppingCart);
@@ -66,7 +69,7 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public CartItem findById(Long id) {
-        return cartItemRepository.findOne(id);
+        return cartItemRepository.findById(id).orElse(null);
     }
 
     @Override

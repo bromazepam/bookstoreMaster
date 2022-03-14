@@ -7,6 +7,7 @@ import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.UserRole;
 
+import java.util.Optional;
 import java.util.Set;
 
 public interface UserService {

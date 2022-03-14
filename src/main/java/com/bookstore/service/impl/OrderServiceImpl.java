@@ -4,21 +4,22 @@ import com.bookstore.domain.*;
 import com.bookstore.repository.OrderRepository;
 import com.bookstore.service.CartItemService;
 import com.bookstore.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.List;
-
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
-    private CartItemService cartItemService;
+    private final CartItemService cartItemService;
+    private final OrderRepository orderRepository;
 
-    @Autowired
-    private OrderRepository orderRepository;
+    public OrderServiceImpl(CartItemService cartItemService, OrderRepository orderRepository) {
+        this.cartItemService = cartItemService;
+        this.orderRepository = orderRepository;
+    }
 
     @Override
     public synchronized Order createOrder(ShoppingCart shoppingCart,
@@ -55,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findOne(Long id) {
-        return orderRepository.findOne(id);
+    public Order findById(Long id) {
+        return orderRepository.findById(id).orElse(null);
     }
 }

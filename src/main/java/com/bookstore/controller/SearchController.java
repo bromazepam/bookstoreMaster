@@ -17,12 +17,13 @@ import java.util.List;
 @Controller
 public class SearchController {
 
+    private final UserService userService;
+    private final BookService bookService;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private BookService bookService;
+    public SearchController(UserService userService, BookService bookService) {
+        this.userService = userService;
+        this.bookService = bookService;
+    }
 
     @RequestMapping("/searchByCategory")
     public String searchByCategory(@RequestParam("category") String category, Model model, Principal principal) {
@@ -62,7 +63,6 @@ public class SearchController {
             model.addAttribute("emptyList", true);
             return "bookshelf";
         }
-
         model.addAttribute("bookList", bookList);
 
         return "bookshelf";

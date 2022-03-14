@@ -23,17 +23,18 @@ import java.util.List;
 @RequestMapping("/shoppingCart")
 public class ShoppingCartController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final CartItemService cartItemService;
+    private final BookService bookService;
+    private final ShoppingCartService shoppingCartService;
 
-    @Autowired
-    private CartItemService cartItemService;
-
-    @Autowired
-    private BookService bookService;
-
-    @Autowired
-    private ShoppingCartService shoppingCartService;
+    public ShoppingCartController(UserService userService, CartItemService cartItemService,
+                                  BookService bookService, ShoppingCartService shoppingCartService) {
+        this.userService = userService;
+        this.cartItemService = cartItemService;
+        this.bookService = bookService;
+        this.shoppingCartService = shoppingCartService;
+    }
 
     @RequestMapping("/cart")
     public String shoppingCart(Model model, Principal principal) {
@@ -54,7 +55,7 @@ public class ShoppingCartController {
     public String addItem(@ModelAttribute("book") Book book, @ModelAttribute("qty") String qty,
                           Model model, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        book = bookService.findOne(book.getId());
+        book = bookService.findById(book.getId());
 
         if (Integer.parseInt(qty) > book.getInStockNumber()) {
             model.addAttribute("notEnoughStock", true);

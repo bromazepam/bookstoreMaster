@@ -26,38 +26,35 @@ public class CheckoutController {
     private BillingAddress billingAddress = new BillingAddress();
     private Payment payment = new Payment();
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
+    private final MailConstructor mailConstructor;
+    private final UserService userService;
+    private final CartItemService cartItemService;
+    private final ShoppingCartService shoppingCartService;
+    private final ShippingAddressService shippingAddressService;
+    private final BillingAddressService billingAddressService;
+    private final PaymentService paymentService;
+    private final UserShippingService userShippingService;
+    private final UserPaymentService userPaymentService;
+    private final OrderService orderService;
 
-    @Autowired
-    private MailConstructor mailConstructor;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private CartItemService cartItemService;
-
-    @Autowired
-    private ShoppingCartService shoppingCartService;
-
-    @Autowired
-    private ShippingAddressService shippingAddressService;
-
-    @Autowired
-    private BillingAddressService billingAddressService;
-
-    @Autowired
-    private PaymentService paymentService;
-
-    @Autowired
-    private UserShippingService userShippingService;
-
-    @Autowired
-    private UserPaymentService userPaymentService;
-
-    @Autowired
-    private OrderService orderService;
+    public CheckoutController(JavaMailSender mailSender, MailConstructor mailConstructor, UserService userService,
+                              CartItemService cartItemService, ShoppingCartService shoppingCartService,
+                              ShippingAddressService shippingAddressService, BillingAddressService billingAddressService,
+                              PaymentService paymentService, UserShippingService userShippingService,
+                              UserPaymentService userPaymentService, OrderService orderService) {
+        this.mailSender = mailSender;
+        this.mailConstructor = mailConstructor;
+        this.userService = userService;
+        this.cartItemService = cartItemService;
+        this.shoppingCartService = shoppingCartService;
+        this.shippingAddressService = shippingAddressService;
+        this.billingAddressService = billingAddressService;
+        this.paymentService = paymentService;
+        this.userShippingService = userShippingService;
+        this.userPaymentService = userPaymentService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping("/checkout")
     public String checkout(@RequestParam("id") Long cartId, @RequestParam(value = "missingRequiredField",

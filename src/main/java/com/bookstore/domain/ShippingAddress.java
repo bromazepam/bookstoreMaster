@@ -16,11 +16,8 @@ public class ShippingAddress {
     private String shippingAddressCountry;
     private String shippingAddressZipcode;
 
-
     @OneToOne
     private Order order;
-
-
 
     public Long getId() {
         return id;

@@ -2,6 +2,8 @@ package com.bookstore.service;
 
 import com.bookstore.domain.*;
 
+import java.util.Optional;
+
 public interface OrderService {
     Order createOrder(ShoppingCart shoppingCart,
                       ShippingAddress shippingAddress,
@@ -10,5 +12,5 @@ public interface OrderService {
                       String shippingMethod,
                       User user);
 
-    Order findOne(Long id);
+    Order findById(Long id);
 }

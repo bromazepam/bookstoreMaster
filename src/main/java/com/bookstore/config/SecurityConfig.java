@@ -18,11 +18,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
 
-    @Autowired
-    private UserSecurityService userSecurityService;
+    private final UserSecurityService userSecurityService;
+
+    public SecurityConfig(Environment env, UserSecurityService userSecurityService) {
+        this.env = env;
+        this.userSecurityService = userSecurityService;
+    }
 
     private BCryptPasswordEncoder passwordEncoder() {
         return SecurityUtility.passwordEncoder();

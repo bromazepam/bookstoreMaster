@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShippingAddressServiceImpl implements ShippingAddressService {
 
-
     @Override
     public ShippingAddress setByUserShipping(UserShipping userShipping, ShippingAddress shippingAddress) {
         shippingAddress.setShippingAddressName(userShipping.getUserShippingName());

@@ -17,7 +17,6 @@ public class Payment {
     private int cvc;
     private String holderName;
 
-
     @OneToOne
     private Order order;
 

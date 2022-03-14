@@ -13,27 +13,28 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+    private final UserPaymentRepository userPaymentRepository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
+    private final UserShippingRepository userShippingRepository;
 
-    @Autowired
-    private UserPaymentRepository userPaymentRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private PasswordResetTokenRepository passwordResetTokenRepository;
-
-    @Autowired
-    private UserShippingRepository userShippingRepository;
+    public UserServiceImpl(UserPaymentRepository userPaymentRepository, UserRepository userRepository,
+                           RoleRepository roleRepository, PasswordResetTokenRepository passwordResetTokenRepository,
+                           UserShippingRepository userShippingRepository) {
+        this.userPaymentRepository = userPaymentRepository;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
+        this.userShippingRepository = userShippingRepository;
+    }
 
     @Override
     public PasswordResetToken getPasswordResetToken(final String token) {
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return userRepository.findOne(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
