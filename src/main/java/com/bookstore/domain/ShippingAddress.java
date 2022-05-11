@@ -19,6 +19,23 @@ public class ShippingAddress {
     @OneToOne
     private Order order;
 
+    public ShippingAddress(Long id, String shippingAddressName, String shippingAddressStreet1,
+                           String shippingAddressStreet2, String shippingAddressCity, String shippingAddressState,
+                           String shippingAddressCountry, String shippingAddressZipcode, Order order) {
+        this.id = id;
+        this.shippingAddressName = shippingAddressName;
+        this.shippingAddressStreet1 = shippingAddressStreet1;
+        this.shippingAddressStreet2 = shippingAddressStreet2;
+        this.shippingAddressCity = shippingAddressCity;
+        this.shippingAddressState = shippingAddressState;
+        this.shippingAddressCountry = shippingAddressCountry;
+        this.shippingAddressZipcode = shippingAddressZipcode;
+        this.order = order;
+    }
+
+    public ShippingAddress() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -19,6 +19,22 @@ public class BillingAddress {
     @OneToOne
     private Order order;
 
+    public BillingAddress(Long id, String billingAddressName, String billingAddressStreet1,
+                          String billingAddressStreet2, String billingAddressCity, String billingAddressState,
+                          String billingAddressCountry, String billingAddressZipcode, Order order) {
+        this.id = id;
+        BillingAddressName = billingAddressName;
+        BillingAddressStreet1 = billingAddressStreet1;
+        BillingAddressStreet2 = billingAddressStreet2;
+        BillingAddressCity = billingAddressCity;
+        BillingAddressState = billingAddressState;
+        BillingAddressCountry = billingAddressCountry;
+        BillingAddressZipcode = billingAddressZipcode;
+        this.order = order;
+    }
+
+    public BillingAddress() {
+    }
 
     public Long getId() {
         return id;

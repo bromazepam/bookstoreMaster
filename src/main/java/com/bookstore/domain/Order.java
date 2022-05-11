@@ -34,6 +34,25 @@ public class Order {
     @ManyToOne
     private User user;
 
+    public Order(Long id, Date orderDate, Date shippingDate, String shippingMethod, String orderStatus,
+                 BigDecimal orderTotal, List<CartItem> cartItemList, ShippingAddress shippingAddress,
+                 BillingAddress billingAddress, Payment payment, User user) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.shippingDate = shippingDate;
+        this.shippingMethod = shippingMethod;
+        this.orderStatus = orderStatus;
+        this.orderTotal = orderTotal;
+        this.cartItemList = cartItemList;
+        this.shippingAddress = shippingAddress;
+        this.billingAddress = billingAddress;
+        this.payment = payment;
+        this.user = user;
+    }
+
+    public Order() {
+    }
+
     public Long getId() {
         return id;
     }

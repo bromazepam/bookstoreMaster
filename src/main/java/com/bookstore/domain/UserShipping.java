@@ -21,6 +21,24 @@ public class UserShipping {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public UserShipping(Long id, String userShippingName, String userShippingStreet1, String userShippingStreet2,
+                        String userShippingCity, String userShippingState, String userShippingCountry,
+                        String userShippingZipcode, boolean userShippingDefault, User user) {
+        this.id = id;
+        this.userShippingName = userShippingName;
+        this.userShippingStreet1 = userShippingStreet1;
+        this.userShippingStreet2 = userShippingStreet2;
+        this.userShippingCity = userShippingCity;
+        this.userShippingState = userShippingState;
+        this.userShippingCountry = userShippingCountry;
+        this.userShippingZipcode = userShippingZipcode;
+        this.userShippingDefault = userShippingDefault;
+        this.user = user;
+    }
+
+    public UserShipping() {
+    }
+
     public boolean isUserShippingDefault() {
         return userShippingDefault;
     }

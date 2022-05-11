@@ -21,6 +21,16 @@ public class ShoppingCart {
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
+    public ShoppingCart(Long id, BigDecimal grandTotal, List<CartItem> cartItemList, User user) {
+        this.id = id;
+        GrandTotal = grandTotal;
+        this.cartItemList = cartItemList;
+        this.user = user;
+    }
+
+    public ShoppingCart() {
+    }
+
     public Long getId() {
         return id;
     }

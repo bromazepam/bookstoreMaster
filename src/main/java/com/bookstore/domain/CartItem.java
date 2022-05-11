@@ -30,6 +30,20 @@ public class CartItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
+    public CartItem(Long id, int qty, BigDecimal subtotal, Book book,
+                    List<BookToCartItem> bookToCartItemList, ShoppingCart shoppingCart, Order order) {
+        this.id = id;
+        this.qty = qty;
+        this.subtotal = subtotal;
+        this.book = book;
+        this.bookToCartItemList = bookToCartItemList;
+        this.shoppingCart = shoppingCart;
+        this.order = order;
+    }
+
+    public CartItem() {
+    }
+
     public Long getId() {
         return id;
     }

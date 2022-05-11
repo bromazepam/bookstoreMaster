@@ -17,6 +17,15 @@ public class BookToCartItem {
     @JoinColumn(name = "cart_item_id")
     private CartItem cartItem;
 
+    public BookToCartItem(Long id, Book book, CartItem cartItem) {
+        this.id = id;
+        this.book = book;
+        this.cartItem = cartItem;
+    }
+
+    public BookToCartItem() {
+    }
+
     public Long getId() {
         return id;
     }

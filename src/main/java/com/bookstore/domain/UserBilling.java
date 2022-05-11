@@ -19,6 +19,23 @@ public class UserBilling {
     @OneToOne(cascade = CascadeType.ALL)
     private UserPayment userPayment;
 
+    public UserBilling(Long id, String userBillingName, String userBillingStreet1, String userBillingStreet2,
+                       String userBillingCity, String userBillingState, String userBillingCountry,
+                       String userBillingZipcode, UserPayment userPayment) {
+        this.id = id;
+        this.userBillingName = userBillingName;
+        this.userBillingStreet1 = userBillingStreet1;
+        this.userBillingStreet2 = userBillingStreet2;
+        this.userBillingCity = userBillingCity;
+        this.userBillingState = userBillingState;
+        this.userBillingCountry = userBillingCountry;
+        this.userBillingZipcode = userBillingZipcode;
+        this.userPayment = userPayment;
+    }
+
+    public UserBilling() {
+    }
+
     public Long getId() {
         return id;
     }

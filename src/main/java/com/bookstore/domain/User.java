@@ -7,10 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User implements UserDetails {
@@ -44,6 +41,27 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
+
+    public User(Long id, String username, String password, String firstName, String lastName, String email,
+                String phone, boolean enabled, ShoppingCart shoppingCart, List<UserShipping> userShippingList,
+                List<UserPayment> userPaymentList, List<Order> orderList, Set<UserRole> userRoles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.enabled = enabled;
+        this.shoppingCart = shoppingCart;
+        this.userShippingList = userShippingList;
+        this.userPaymentList = userPaymentList;
+        this.orderList = orderList;
+        this.userRoles = userRoles;
+    }
+
+    public User() {
+    }
 
     public ShoppingCart getShoppingCart() {
         return shoppingCart;

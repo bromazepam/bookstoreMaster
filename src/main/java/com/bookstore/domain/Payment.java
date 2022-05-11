@@ -23,6 +23,23 @@ public class Payment {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
     private UserBilling userBilling;
 
+    public Payment(Long id, String type, String cardName, String cardNumber, int expiryMonth, int expiryYear,
+                   int cvc, String holderName, Order order, UserBilling userBilling) {
+        this.id = id;
+        this.type = type;
+        this.cardName = cardName;
+        this.cardNumber = cardNumber;
+        this.expiryMonth = expiryMonth;
+        this.expiryYear = expiryYear;
+        this.cvc = cvc;
+        this.holderName = holderName;
+        this.order = order;
+        this.userBilling = userBilling;
+    }
+
+    public Payment() {
+    }
+
     public Long getId() {
         return id;
     }
