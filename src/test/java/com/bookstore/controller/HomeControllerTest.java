@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.reset;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -50,17 +51,15 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testHours() throws Exception {
-        mockMvc.perform(get("/hours"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("hours"));
+    public void testHours() {
+        String view = homeController.hours();
+        assertThat("hours").isEqualTo(view);
     }
 
     @Test
-    public void testFAQ() throws Exception {
-        mockMvc.perform(get("/faq"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("faq"));
+    public void testFAQ() {
+        String view = homeController.faq();
+        assertThat("faq").isEqualTo(view);
     }
 
     @Test
